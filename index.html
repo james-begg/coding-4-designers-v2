@@ -9,12 +9,18 @@
     <title>Document</title>
 </head>
 
-<body>
-    <div id="time-left">Time left: </div>
+<body id="body">
+    <h1>Timings!</h1>
+
     <form action=""
-        id="form">
-        <input type="text" name="time" id="time">
-        <button type="submit">Subscribe</button>
+        id="time-form">
+        <label for="time">How long do you want? (Minutes)</label>
+
+        <input type="number"
+            name="time"
+            id="time">
+
+        <button type="submit">Submit</button>
     </form>
 </body>
 

@@ -1,19 +1,31 @@
+const timeInMinutes = new URLSearchParams(window.location.search).get('time');
 
-setTimeout(() => {
-    const para = document.createElement('p');
-    const node = document.createTextNode('This is new.');
-    para.appendChild(node);
-
-    console.log(new URLSearchParams(window.location.search).get('time'));
-
-    const element = document.getElementById('time-left');
-    element.appendChild(para);
-
-
-    const form = document.getElementById('form');
-    console.log(document.getElementById('form'));
+if (timeInMinutes) {
+    // HANDLE IN THE CASE OF A FILLED IN USER
     
-    form.addEventListener('submit', (event) => {
-        console.log(event);
-    });
-}, 1000);
+    // We want to not show the input/form info
+    setTimeout(() => {
+        const formEl = document.getElementById('time-form');
+        formEl.remove();
+
+        addTextToBody(`You have selected ${timeInMinutes} minutes of timer`);
+    }, 0);
+} else {
+    // HANDLE AS A NEW USER
+
+    // We want to show the form stuff
+}
+
+function addTextToBody() {
+    // Create a <p> tag
+    const para = document.createElement('p');
+    // Create the text to go inside
+    const node = document.createTextNode(`You have selected ${timeInMinutes} minutes of timer`);
+    // Find the body tag
+    const bodyEl = document.getElementById('body');
+    
+    // Add the text to the newly created <p> tag
+    para.appendChild(node);
+    // Add the new element to the body
+    bodyEl.appendChild(para);
+}
